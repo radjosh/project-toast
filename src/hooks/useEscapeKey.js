@@ -9,7 +9,7 @@ export function useEscapeKey(f) {
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown");
+      window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [f]);
 }

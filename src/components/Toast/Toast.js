@@ -32,10 +32,13 @@ function Toast({ id }) {
       <div className={styles.iconContainer}>
         <div>{IconComponent && <IconComponent size={24} />}</div>
         <p className={styles.content}>{message}</p>
-        <button className={styles.closeButton} onClick={() => removeToast(id)}>
+        <button
+          className={styles.closeButton}
+          onClick={() => removeToast(id)}
+          aria-label="Dismiss message"
+          aria-live="off"
+        >
           <X size={24} />
-          {/* <VisuallyHidden forceShow={forceShow} setForceShow={setForceShow}> */}
-          {/* <VisuallyHidden>Dismiss message</VisuallyHidden> */}
         </button>
       </div>
     </div>

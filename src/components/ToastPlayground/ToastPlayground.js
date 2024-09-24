@@ -18,8 +18,6 @@ function ToastPlayground() {
     setVariant,
     forceShow,
     setForceShow,
-    toasts,
-    setToasts,
     addToast,
   } = React.useContext(ToastContext);
 

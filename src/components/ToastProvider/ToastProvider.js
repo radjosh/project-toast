@@ -7,6 +7,10 @@ function ToastProvider({ children }) {
   const [variant, setVariant] = React.useState("notice");
   const [forceShow, setForceShow] = React.useState(false);
   const [toasts, setToasts] = React.useState([]);
+  function removeToast(id) {
+    const nextToasts = toasts.filter((item) => item.id !== id);
+    setToasts((currentValue) => nextToasts);
+  }
 
   return (
     <ToastContext.Provider
@@ -19,6 +23,7 @@ function ToastProvider({ children }) {
         setForceShow,
         toasts,
         setToasts,
+        removeToast,
       }}
     >
       {children}

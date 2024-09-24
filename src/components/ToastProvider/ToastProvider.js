@@ -26,10 +26,13 @@ function ToastProvider({ children }) {
     setVariant("notice");
   }
 
-  useEscapeKey(() => {
+  // from solution. best prax
+  const handleEscape = React.useCallback(() => {
     const nextToasts = [];
     setToasts(nextToasts);
-  });
+  }, []);
+
+  useEscapeKey(handleEscape);
 
   return (
     <ToastContext.Provider

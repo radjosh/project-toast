@@ -4,16 +4,23 @@ import Button from "../Button";
 
 import styles from "./ToastPlayground.module.css";
 // import Toast from "../Toast";
+import { ToastContext } from "../ToastProvider";
 import ToastShelf from "../ToastShelf";
 import VisuallyHidden from "../VisuallyHidden";
 
 const VARIANT_OPTIONS = ["notice", "warning", "success", "error"];
 
 function ToastPlayground() {
-  const [message, setMessage] = React.useState("");
-  const [variant, setVariant] = React.useState("notice");
-  const [forceShow, setForceShow] = React.useState(false);
-  const [toasts, setToasts] = React.useState([]);
+  const {
+    message,
+    setMessage,
+    variant,
+    setVariant,
+    forceShow,
+    setForceShow,
+    toasts,
+    setToasts,
+  } = React.useContext(ToastContext);
 
   return (
     <div className={styles.wrapper}>

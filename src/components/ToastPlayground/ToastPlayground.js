@@ -20,6 +20,7 @@ function ToastPlayground() {
     setForceShow,
     toasts,
     setToasts,
+    addToast,
   } = React.useContext(ToastContext);
 
   return (
@@ -31,16 +32,7 @@ function ToastPlayground() {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          const newToast = {
-            message: message,
-            variant: variant,
-            id: crypto.randomUUID(),
-          };
-          const nextToasts = [...toasts, newToast];
-          setToasts(nextToasts);
-          setForceShow(true);
-          setMessage("");
-          setVariant("notice");
+          addToast(message, variant);
         }}
       >
         {forceShow && (

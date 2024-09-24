@@ -11,6 +11,18 @@ function ToastProvider({ children }) {
     const nextToasts = toasts.filter((item) => item.id !== id);
     setToasts((currentValue) => nextToasts);
   }
+  function addToast(message, variant) {
+    const newToast = {
+      message: message,
+      variant: variant,
+      id: crypto.randomUUID(),
+    };
+    const nextToasts = [...toasts, newToast];
+    setToasts(nextToasts);
+    setForceShow(true);
+    setMessage("");
+    setVariant("notice");
+  }
 
   return (
     <ToastContext.Provider
@@ -24,6 +36,7 @@ function ToastProvider({ children }) {
         toasts,
         setToasts,
         removeToast,
+        addToast,
       }}
     >
       {children}

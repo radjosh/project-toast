@@ -26,9 +26,7 @@ function ToastProvider({ children }) {
     setVariant("notice");
   }
 
-  // wild that this works globally!!
-  // this isn't being explicitly consumed anywhere
-  const clear = useEscapeKey(() => {
+  useEscapeKey(() => {
     const nextToasts = [];
     setToasts(nextToasts);
   });
@@ -46,7 +44,6 @@ function ToastProvider({ children }) {
         setToasts,
         removeToast,
         addToast,
-        clear,
       }}
     >
       {children}

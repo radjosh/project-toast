@@ -1,15 +1,10 @@
 import React from "react";
 
 import styles from "./VisuallyHidden.module.css";
+import { ToastContext } from "../ToastProvider";
 
-const VisuallyHidden = ({
-  children,
-  forceShow,
-  setForceShow,
-  className = "",
-  ...delegated
-}) => {
-  // const [forceShow, setForceShow] = React.useState(false);
+const VisuallyHidden = ({ children, className = "", ...delegated }) => {
+  const { forceShow, setForceShow } = React.useContext(ToastContext);
 
   // React.useEffect(() => {
   //   if (process.env.NODE_ENV !== "production") {

@@ -37,7 +37,7 @@ function ToastPlayground() {
       >
         {forceShow && (
           <VisuallyHidden forceShow={forceShow} setForceShow={setForceShow}>
-            <ToastShelf toasts={toasts} setToasts={setToasts} />
+            <ToastShelf />
           </VisuallyHidden>
         )}
 

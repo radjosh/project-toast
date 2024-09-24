@@ -1,4 +1,5 @@
 import React from "react";
+import { useEscapeKey } from "../../hooks/useEscapeKey.js";
 
 export const ToastContext = React.createContext();
 
@@ -27,19 +28,10 @@ function ToastProvider({ children }) {
 
   // wild that this works globally!!
   // this isn't being explicitly consumed anywhere
-  const clear = React.useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        const nextToasts = [];
-        setToasts(nextToasts);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown");
-    };
-  }, []);
+  const clear = useEscapeKey(() => {
+    const nextToasts = [];
+    setToasts(nextToasts);
+  });
 
   return (
     <ToastContext.Provider
